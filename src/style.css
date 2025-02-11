@@ -212,6 +212,8 @@
     top: 50%;
     translate: 0 -50%;
     cursor: ew-resize;
+    box-shadow: none;
+    filter: none;
   }
   input[type="range"]::-moz-range-thumb {
     box-sizing: border-box;
@@ -223,6 +225,8 @@
     width: 20px;
     height: 20px;
     cursor: ew-resize;
+    box-shadow: none;
+    filter: none;
   }
 
   ::highlight(hl-letters) {

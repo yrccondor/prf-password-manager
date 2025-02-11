@@ -1894,8 +1894,9 @@ const login = async () => {
 
 /**
  * Handle the login process
+ * @param {boolean?} silentCancelledError - Whether to show an error when the login request is cancelled
  */
-const handleLogin = async () => {
+const handleLogin = async (silentCancelledError = false) => {
   loading.value = true
 
   // Read from the passkey so we can get the decryption key
@@ -1904,7 +1905,9 @@ const handleLogin = async () => {
     withResponse: false,
     allowed: keyid.value ? [keyid.value] : []
   }).catch((e) => {
-    reportError(e)
+    if (!silentCancelledError) {
+      reportError(e)
+    }
     return false
   })
 
@@ -2067,6 +2070,8 @@ const logout = () => {
   } else {
     newDevice.value = true
   }
+
+  localStorage.setItem('prf_skip_auto_login', 'true')
 
   setTimeout(() => {
     builtEntriesList.value = []
@@ -3081,6 +3086,18 @@ onMounted(() => {
   // Check if the device is new
   if (localStorage.getItem('prf_config')) {
     newDevice.value = false
+
+    // Try auto login
+    if (localStorage.getItem('prf_skip_auto_login')) {
+      localStorage.removeItem('prf_skip_auto_login')
+    } else {
+      const config = JSON.parse(localStorage.getItem('prf_config'))
+      firstSalt.value = Uint8Array.from(window.atob(config.salt), c => c.charCodeAt(0))
+      keyid.value = config.id ? Uint8Array.from(window.atob(config.id.replace(/\-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0)) : false
+
+      // Try login when the page is loaded
+      handleLogin(true)
+    }
   } else {
     newDevice.value = true
   }

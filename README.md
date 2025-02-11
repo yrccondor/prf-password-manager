@@ -28,6 +28,8 @@ npm run dev
 
 and a development version will be available at `localhost:5173`.
 
+For details on usages of the WebAuthn PRF and Large Blob extensions, please refer to [src/passkey.js](https://github.com/yrccondor/prf-password-manager/blob/master/src/passkey.js).
+
 ## Deployment
 
 ```bash

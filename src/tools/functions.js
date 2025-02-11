@@ -1,9 +1,13 @@
 /**
  * Convert an array to a base64 string
  * @param {Uint8Array} a - The array to convert
+ * @param {boolean?} urlSafe - Whether to use url safe base64
  * @returns {string} The base64 string
  */
-export const arrayToBase64String = (a) => {
+export const arrayToBase64String = (a, urlSafe = false) => {
+  if (urlSafe) {
+    return btoa(String.fromCharCode(...a)).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_')
+  }
   return btoa(String.fromCharCode(...a))
 }
 

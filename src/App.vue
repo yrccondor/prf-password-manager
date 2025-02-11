@@ -980,7 +980,7 @@
                   </p>
                   <h4 class="text-gray-700 text-base mt-6">Local Storage</h4>
                   <p class="text-gray-400 leading-4">Inspect your local storage. No changes will be saved until you press “Save”.</p>
-                  <div class="mt-3">
+                  <div class="mt-3 text-gray-700">
                     <label class="inline-block w-21 me-3" for="prf-salt">PRF Salt</label>
                     <input class="font-code text-sm border-2 border-gray-300 w-58 outline-none p-2 py-0.5 focus:border-gray-400" type="text" id="prf-salt" v-model="storageSalt" />
                   </div>
@@ -1822,7 +1822,7 @@ const initEncrypt = async () => {
   // Update local storage
   localStorage.setItem('prf_config', JSON.stringify({
     salt: arrayToBase64String(firstSalt.value),
-    id: arrayToBase64String(new Uint8Array(keyid.value))
+    id: arrayToBase64String(new Uint8Array(keyid.value), true)
   }))
 
   //Before going to the main page, we need to set the metaList for the UI

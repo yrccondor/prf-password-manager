@@ -1,0 +1,246 @@
+@import 'tailwindcss';
+
+@config '../tailwind.config.js';
+
+@custom-variant hover (&:hover);
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@utility input-container {
+  @apply flex items-center justify-center border-2 border-gray-500 text-lg bg-white;
+  input {
+    @apply outline-hidden border-none grow bg-transparent p-3 pe-0 w-full;
+  }
+  & > svg {
+    @apply p-3 box-content shrink-0;
+  }
+  .btn-in-input {
+    @apply px-3 py-0 my-3 bg-transparent text-black box-content h-full;
+    &:hover {
+      @apply bg-gray-200;
+    }
+  }
+  &:focus-within {
+    @apply border-gray-900;
+  }
+  &.input-disabled {
+    @apply bg-gray-200 text-gray-400 border-gray-400;
+    input {
+      @apply pointer-events-none;
+    }
+    .btn-in-input {
+      @apply pointer-events-none;
+      & > svg {
+        @apply animate-spin;
+        animation-duration: 2s;
+      }
+    }
+  }
+}
+
+@utility list-container {
+  @apply flex items-center justify-center border-2 border-gray-500 text-lg bg-white;
+  .list-botton {
+    @apply p-3 pe-0 outline-hidden border-none grow bg-transparent flex items-center justify-between;
+    svg {
+      @apply pe-3 box-content;
+    }
+  }
+  &:focus-within {
+    @apply border-gray-900;
+  }
+  &.list-disabled {
+    @apply bg-gray-200 text-gray-400 border-gray-400;
+    .list-botton {
+      @apply pointer-events-none;
+    }
+  }
+}
+
+@utility btn {
+  @apply flex items-center justify-between bg-gray-800 text-white p-3 text-lg box-border;
+  &:hover {
+    @apply bg-gray-900;
+  }
+  &:disabled {
+    @apply bg-gray-300 cursor-default text-gray-500;
+  }
+  &:focus-visible {
+    @apply bg-gray-900;
+  }
+}
+
+@utility btn-next {
+  @apply transition-[padding] duration-150 outline-hidden;
+  &:hover {
+    @apply pe-4;
+  }
+  &:disabled:hover {
+    @apply pe-3;
+  }
+  &:focus-visible {
+    @apply pe-4;
+  }
+  &.btn-loading {
+    @apply cursor-wait;
+    svg {
+      @apply animate-spin;
+      animation-duration: 2s;
+    }
+  }
+}
+
+@utility btn-loading {
+  @apply bg-gray-300 text-gray-500 animate-pulse cursor-wait;
+  &.btn-next {
+    @apply cursor-wait;
+    svg {
+      @apply animate-spin;
+      animation-duration: 2s;
+    }
+  }
+}
+
+@utility btn-second {
+  @apply bg-gray-200 text-gray-800;
+  &:hover {
+    @apply bg-gray-300;
+  }
+  &:focus-visible {
+    @apply bg-gray-300;
+  }
+}
+
+@utility btn-transparent {
+  @apply bg-gray-500/20 text-gray-800;
+  &:hover {
+    @apply bg-gray-500/30;
+  }
+  &:focus-visible {
+    @apply bg-gray-500/30;
+  }
+  &:disabled {
+    @apply bg-gray-500/10 text-gray-400;
+  }
+  &.btn-loading {
+    @apply bg-gray-500/10 text-gray-400 cursor-wait;
+    svg {
+      @apply animate-spin;
+      animation-duration: 2s;
+    }
+  }
+}
+
+@utility btn-small {
+  @apply p-1 px-3 text-sm;
+}
+
+@utility flex-all {
+  @apply flex items-center justify-center;
+}
+
+@utility full-screen {
+  @apply h-screen w-screen;
+}
+
+@utility no-liga {
+  font-feature-settings:
+    'liga' 0,
+    'clig' 0;
+  -webkit-font-feature-settings:
+    'liga' 0,
+    'clig' 0;
+  -moz-font-feature-settings:
+    'liga' 0,
+    'clig' 0;
+  font-variant-ligatures: none;
+}
+
+@layer base {
+  :root {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+  #app {
+    overflow: hidden;
+  }
+  input[type="range"] {
+    appearance: none;
+    background-color: transparent;
+    width: 200px;
+  }
+  input[type="range"]::-webkit-slider-runnable-track {
+    position: relative;
+    height: 4px;
+    background-color: #d2d5da;
+    border-radius: 0;
+  }
+
+  input[type="range"]::-moz-range-track {
+    position: relative;
+    height: 4px;
+    background-color: #d2d5da;
+    border-radius: 0;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    box-sizing: border-box;
+    appearance: none;
+    position: relative;
+    background-color: #4f5462;
+    border: 4px solid #f9fafb;
+    border-radius: 0;
+    width: 20px;
+    height: 20px;
+    top: 50%;
+    translate: 0 -50%;
+    cursor: ew-resize;
+  }
+  input[type="range"]::-moz-range-thumb {
+    box-sizing: border-box;
+    appearance: none;
+    position: relative;
+    background-color: #4f5462;
+    border: 4px solid #f9fafb;
+    border-radius: 0;
+    width: 20px;
+    height: 20px;
+    cursor: ew-resize;
+  }
+
+  ::highlight(hl-letters) {
+    @apply text-blue-800;
+  }
+  ::highlight(hl-numbers) {
+    @apply text-emerald-500;
+  }
+  ::highlight(hl-special) {
+    @apply text-pink-500;
+  }
+  ::highlight(hl-ignored) {
+    @apply text-gray-400;
+  }
+  ::highlight(hl-notice) {
+    @apply text-purple-500;
+  }
+  ::highlight(hl-other) {
+    @apply text-amber-500;
+  }
+}

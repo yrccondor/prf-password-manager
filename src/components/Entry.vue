@@ -151,6 +151,7 @@
           <img :src="`https://icon.horse/icon/${getHostname(entry.urls[0])}`">
         </div>
         <span class="truncate">{{ getHostname(entry.urls[0]) || '' }}</span>
+        <span class="text-gray-500 text-xs bg-gray-200 px-1.5 py-0 rounded-full ms-2" v-if="entry.urls.length > 1" :title="buildMoreUrls(entry.urls)">+{{ entry.urls.length - 1 }}</span>
       </div>
     </div>
   </header>
@@ -801,6 +802,15 @@ const addField = (type, i, close) => {
  */
 const checkPos = (e) => {
   float.value = checkScreenPos(e)
+}
+
+/**
+ * Build the more urls title string
+ * @param {string[]} urls - The urls
+ * @returns {string} The more urls title string
+ */
+const buildMoreUrls = (urls) => {
+  return urls.slice(1).map((url) => getHostname(url)).join(', ')
 }
 
 onMounted(() => {

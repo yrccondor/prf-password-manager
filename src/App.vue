@@ -490,6 +490,10 @@
                   <p class="text-gray-700">
                     A password management tool as a demonstration and proof of concept of WebAuthn PRF extension and Large Blob extension.
                   </p>
+                  <a class="btn btn-second btn-small w-fit py-2 my-2 outline-none" href="https://github.com/yrccondor/prf-password-manager" target="_blank" rel="noopener noreferrer">
+                    <cb-logo-github class="me-2" />
+                    View on GitHub
+                  </a>
                   <p class="mt-1 text-gray-700">
                     This application is a personal experimental project and is not created by, affiliated with, or supported by Doist, the company behind Todoist.
                   </p>
@@ -719,10 +723,6 @@
                       </DisclosurePanel>
                     </transition>
                   </Disclosure>
-                  <!-- <h4 class="text-xl sm:text-2xl font-display leading-6 text-gray-900 mt-4">Technical details</h4>
-                  <p class="text-gray-700">
-                    If you are interested in the technologies under the hood, here are some great articles to read.
-                  </p> -->
                 </div>
               </div>
               <div class="mt-8 flex justify-between">

@@ -78,8 +78,7 @@ export default {
    * @returns {Promise<CryptoKey>} the encryption/decryption key
    */
   getKey: async ({ keyid, firstSalt, write }) => {
-    const challenge = new Uint8Array(32)
-    crypto.getRandomValues(challenge)
+    const challenge = generateRandomUint8Array()
 
     const config = {
       publicKey: {
@@ -134,8 +133,7 @@ export default {
    */
   read: async ({ firstSalt, withResponse, allowed}) => {
     // Generate a random challenge
-    const challenge = new Uint8Array(32)
-    crypto.getRandomValues(challenge)
+    const challenge = generateRandomUint8Array()
 
     const config = {
       publicKey: {
@@ -208,8 +206,7 @@ export default {
    * @returns {Promise<boolean>} true if the large blob was written successfully
    */
   write: async ({ keyid, write }) => {
-    const challenge = new Uint8Array(32)
-    crypto.getRandomValues(challenge)
+    const challenge = generateRandomUint8Array()
 
     const config = {
       publicKey: {
@@ -251,10 +248,8 @@ export default {
   encrypt: async ({ key, plaintext, label }) => {
     // Encode the label, safely generate a random salt and iv
     const info = new TextEncoder().encode(label)
-    const salt = new Uint8Array(32)
-    crypto.getRandomValues(salt)
-    const iv = new Uint8Array(12)
-    crypto.getRandomValues(iv)
+    const salt = generateRandomUint8Array()
+    const iv = generateRandomUint8Array(12)
 
     // Derive the encryption key from the salt and the master key
     const encryptionKey = await crypto.subtle.deriveKey(

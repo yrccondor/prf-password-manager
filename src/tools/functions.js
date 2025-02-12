@@ -102,6 +102,7 @@ export const betterFetch = async (url, option = {}, targetType = '') => {
 
 /**
  * Generate a new random Uint8Array
+ * @param {number?} length - The length of the Uint8Array, default is 32
  * @returns {Uint8Array}
  */
 export const generateRandomUint8Array = (length = 32) => {

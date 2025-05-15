@@ -219,7 +219,9 @@
         <PopoverButton
           :class="open ? 'bg-gray-200' : ''"
           class="text-gray-600 cursor-pointer w-full bg-gray-100 text-start text-sm px-4 py-3 outline-hidden border-none flex items-center justify-between my-2 hover:bg-gray-200 focus-visible:bg-gray-200 hover:pe-5 focus-visible:pe-5 transition-[padding]"
-          @click.prevent="checkPos"
+          @click="(e) => open ? false : checkPos(e)"
+          @keydown.enter.passive="(e) => !open ? false : checkPos(e)"
+          @keydown.space.passive="(e) => !open ? false : checkPos(e)"
         >
           Add a field
           <cb-add />

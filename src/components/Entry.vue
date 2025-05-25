@@ -236,23 +236,23 @@
         >
           <PopoverPanel v-slot="{ close }" class="absolute z-50 w-full bg-gray-200 left-0 text-sm" :class="float === 'bottom' ? 'top-full mt-1' : 'bottom-full mb-1'">
             <div class="overflow-hidden text-gray-700">
-              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('username', i, close)">
+              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('username', -1, close)">
                 Username
                 <cb-user />
               </button>
-              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('password', i, close)">
+              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('password', -1, close)">
                 Password / PIN / Token
                 <cb-locked />
               </button>
-              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('uap', i, close)">
+              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('uap', -1, close)">
                 Username and password
                 <cb-user-access-locked />
               </button>
-              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('card', i, close)">
+              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('card', -1, close)">
                 Bank card
                 <cb-purchase />
               </button>
-              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('text', i, close)">
+              <button class="flex justify-between w-full px-4 py-3 hover:bg-gray-300 focus-visible:bg-gray-300 hover:pe-5 focus-visible:pe-5 transition-[padding]" @click="addField('text', -1, close)">
                 Note
                 <cb-text-short-paragraph />
               </button>
